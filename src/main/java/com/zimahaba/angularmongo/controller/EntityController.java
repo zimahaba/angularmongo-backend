@@ -17,7 +17,7 @@ public class EntityController {
 
     @GetMapping("/entity")
     public ResponseEntity<List> findAll() {
-        return ResponseEntity.ok(entityService.findAll());
+        return ResponseEntity.ok(entityService.findAllDTO());
     }
 
     @GetMapping("/entity/{id}")
