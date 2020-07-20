@@ -1,7 +1,7 @@
 package com.zimahaba.angularmongo.controller;
 
 import com.zimahaba.angularmongo.entity.Entity;
-import org.springframework.http.HttpStatus;
+import com.zimahaba.angularmongo.entity.dto.EntityDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,9 +17,9 @@ public class EntityFreeController {
 
     @GetMapping("/entity")
     public ResponseEntity<List> findAll() {
-        Entity entity1 = Entity.builder().oneString("oneString 1").oneInteger(1).oneLong(2L).oneDecimal(BigDecimal.ONE)
+        EntityDTO entity1 = EntityDTO.builder().oneString("oneString 1").oneInteger(1).oneLong(2L).oneDecimal(BigDecimal.ONE)
                 .oneDate(LocalDate.now()).oneTime(LocalTime.now()).build();
-        Entity entity2 = Entity.builder().oneString("oneString 2").oneInteger(3).oneLong(4L).oneDecimal(BigDecimal.TEN)
+        EntityDTO entity2 = EntityDTO.builder().oneString("oneString 2").oneInteger(3).oneLong(4L).oneDecimal(BigDecimal.TEN)
                 .oneDate(LocalDate.now()).oneTime(LocalTime.now()).build();
         return ResponseEntity.ok(Arrays.asList(entity1, entity2));
     }
