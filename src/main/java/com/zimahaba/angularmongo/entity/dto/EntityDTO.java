@@ -15,6 +15,7 @@ import java.time.LocalTime;
 @Builder
 public class EntityDTO {
 
+    private String id;
     private String oneString;
     private Integer oneInteger;
     private Long oneLong;
