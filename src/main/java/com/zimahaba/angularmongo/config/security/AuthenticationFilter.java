@@ -49,6 +49,11 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .withSubject(((User) authResult.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
+        //response.addHeader("Access-Control-Allow-Credentials", "true");
+        //response.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+        response.addHeader("Access-Control-Expose-Headers", "Authorization");
+        //response.addHeader("Access-Control-Allow-Origin", "http://localhost:4200");
+        //response.addHeader("Access-Control-Allow-Headers", "Authorization, Origin, Content-Type, Accept");
         response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
     }
 }

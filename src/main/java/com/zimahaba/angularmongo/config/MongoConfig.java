@@ -20,7 +20,7 @@ public class MongoConfig extends AbstractMongoClientConfiguration {
     @Override
     protected void configureClientSettings(MongoClientSettings.Builder builder) {
         builder.applyToClusterSettings(settings  -> {
-            settings.hosts(singletonList(new ServerAddress("172.18.0.2", 27017)));
+            settings.hosts(singletonList(new ServerAddress("172.20.0.2", 27017)));
         });
     }
 }

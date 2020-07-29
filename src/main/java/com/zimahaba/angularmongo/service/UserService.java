@@ -33,11 +33,11 @@ public class UserService extends SuperEntityService<ApplicationUser> implements 
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        /*ApplicationUser user = userRepository.findByUsername(username);
+        ApplicationUser user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
-        return new User(user.getUsername(), user.getPassword(), Collections.emptyList());*/
-        return new User("zimahaba", "admin", Collections.emptyList());
+        return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
+        //return new User("zimahaba", "admin", Collections.emptyList());
     }
 }
