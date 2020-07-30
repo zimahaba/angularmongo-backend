@@ -1,5 +1,8 @@
-package com.zimahaba.angularmongo.config.security;
+package com.zimahaba.angularmongo.config.security.configurer;
 
+import com.zimahaba.angularmongo.config.security.configurer.LocalWebSecurity;
+import com.zimahaba.angularmongo.config.security.configurer.MemoryWebSecurity;
+import com.zimahaba.angularmongo.config.security.configurer.WebSecurity;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -10,11 +13,15 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 @Configuration
 public class SecurityConfig {
 
-    @Profile("dev")
+    @Profile("dsec")
     @EnableWebSecurity
     public static class RemoteSecurity extends WebSecurity {}
 
-    @Profile("local")
+    @Profile("msec")
+    @EnableWebSecurity
+    public static class MemorySecurity extends MemoryWebSecurity {}
+
+    @Profile("lsec")
     @EnableWebSecurity
     public static class LocalSecurity extends LocalWebSecurity {}
 }

@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
 import static java.util.Collections.singletonList;
 
-@Profile({"dev", "local"})
+@Profile({"data"})
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
 

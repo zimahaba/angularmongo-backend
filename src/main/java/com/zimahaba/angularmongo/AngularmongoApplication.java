@@ -15,7 +15,8 @@ public class AngularmongoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication app = new SpringApplication(AngularmongoApplication.class);
-		app.setAdditionalProfiles("dev");
+		//app.setAdditionalProfiles("dev", "data");
+		app.setAdditionalProfiles("msec");
 		app.run(args);
 	}
 

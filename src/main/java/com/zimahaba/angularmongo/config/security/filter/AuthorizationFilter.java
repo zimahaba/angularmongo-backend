@@ -1,4 +1,4 @@
-package com.zimahaba.angularmongo.config.security;
+package com.zimahaba.angularmongo.config.security.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

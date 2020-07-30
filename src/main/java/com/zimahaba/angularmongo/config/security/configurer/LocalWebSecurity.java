@@ -1,4 +1,4 @@
-package com.zimahaba.angularmongo.config.security;
+package com.zimahaba.angularmongo.config.security.configurer;
 
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;

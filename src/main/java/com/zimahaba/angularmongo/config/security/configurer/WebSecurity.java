@@ -1,5 +1,7 @@
-package com.zimahaba.angularmongo.config.security;
+package com.zimahaba.angularmongo.config.security.configurer;
 
+import com.zimahaba.angularmongo.config.security.filter.AuthenticationFilter;
+import com.zimahaba.angularmongo.config.security.filter.AuthorizationFilter;
 import com.zimahaba.angularmongo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -30,8 +32,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .antMatchers("/free/**").permitAll()
-                .antMatchers("/home").permitAll()
+                .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthenticationFilter(authenticationManager()))
