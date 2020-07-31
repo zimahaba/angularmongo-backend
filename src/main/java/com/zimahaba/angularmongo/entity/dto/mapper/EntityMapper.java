@@ -8,10 +8,6 @@ import org.mapstruct.factory.Mappers;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface EntityMapper {
+public interface EntityMapper extends SuperMapper<Entity, EntityDTO> {
 
-    EntityDTO toDTO(Entity entity);
-    Entity toEntity(EntityDTO entityDTO);
-    List<EntityDTO> toDTOList(List<Entity> entityList);
-    List<Entity> toEntityList(List<EntityDTO> entityDTOList);
 }

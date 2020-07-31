@@ -13,7 +13,7 @@ import java.time.LocalTime;
 @EqualsAndHashCode
 @ToString
 @Builder
-public class EntityDTO {
+public class EntityDTO extends DTO {
 
     private String id;
     private String oneString;

@@ -11,7 +11,7 @@ public class LocalAngularmongoApplication {
 
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(AngularmongoApplication.class);
-        app.setAdditionalProfiles("local");
+        app.setAdditionalProfiles("local", "lsec");
         app.run(args);
     }
 }

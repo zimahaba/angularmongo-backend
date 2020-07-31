@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static com.zimahaba.angularmongo.config.security.SecurityConstants.*;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
@@ -24,7 +25,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws IOException, ServletException {
-        String header = request.getHeader(HEADER_STRING);
+        String header = request.getHeader(AUTHORIZATION);
 
         if (header == null || !header.startsWith(TOKEN_PREFIX)) {
             chain.doFilter(request, response);
@@ -38,7 +39,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
     }
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest request) {
-        String token = request.getHeader(HEADER_STRING);
+        String token = request.getHeader(AUTHORIZATION);
         if (token != null) {
             String user = JWT.require(Algorithm.HMAC512(SECRET.getBytes()))
                     .build()

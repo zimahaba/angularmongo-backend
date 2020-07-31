@@ -3,10 +3,14 @@ package com.zimahaba.angularmongo.config.security.filter;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zimahaba.angularmongo.entity.ApplicationUser;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.token.Token;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -19,6 +23,8 @@ import java.util.Date;
 
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static com.zimahaba.angularmongo.config.security.SecurityConstants.*;
+import static org.springframework.http.HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS;
+import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -49,7 +55,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .withSubject(((User) authResult.getPrincipal()).getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .sign(HMAC512(SECRET.getBytes()));
-        response.addHeader("Access-Control-Expose-Headers", "Authorization");
-        response.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        response.addHeader(ACCESS_CONTROL_EXPOSE_HEADERS, AUTHORIZATION);
+        response.addHeader(AUTHORIZATION, TOKEN_PREFIX + token);
     }
 }
