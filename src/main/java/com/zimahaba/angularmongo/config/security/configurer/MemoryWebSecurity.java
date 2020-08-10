@@ -25,6 +25,7 @@ public class MemoryWebSecurity extends WebSecurity {
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.applyPermitDefaultValues();
         corsConfiguration.addAllowedOrigin("http://localhost:4200");
         corsConfiguration.addAllowedMethod(HttpMethod.GET);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);

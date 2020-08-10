@@ -37,7 +37,7 @@ public class UserService extends SuperEntityService<ApplicationUser> implements 
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }
+
         return new User(user.getUsername(), user.getPassword(), Collections.emptyList());
-        //return new User("zimahaba", "admin", Collections.emptyList());
     }
 }
